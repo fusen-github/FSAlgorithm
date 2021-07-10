@@ -353,28 +353,22 @@
         BSTNode *node = array.lastObject;
         [array removeLastObject];
         
-        // 
+        // 当标记了叶子结点，但是后面还有非叶子结点，那么就不是完全二叉树
         if (leafFlag && ![node isLeafNode]) {
             return NO;
         }
         
-        // 可以确定不是完全二叉树
-        if (node->left == nil && node->right) {
-            return NO;
-        }
-        else if ([node isLeafNode] || [node isSingleLeft])
-        {
-            leafFlag = YES;
-        }
-        
         if (node->left) {
             [array insertObject:node->left atIndex:0];
+        } else if (node->right) {
+            return NO;
         }
         
         if (node->right) {
             [array insertObject:node->right atIndex:0];
+        } else {
+            leafFlag = YES;
         }
-        
     }
     
     return true;
