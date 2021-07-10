@@ -37,16 +37,19 @@
     BOOL isPreorderStop;
     BOOL isInorderStop;
     BOOL isPostorderStop;
+    BOOL isLevelStop;
 }
 // 前序遍历block
-@property (nonatomic, copy) BTEnumeratorBlock preorderBlock;
+@property (nonatomic, copy) BSTEnumeratorBlock preorderBlock;
 
 // 中序遍历block
-@property (nonatomic, copy) BTEnumeratorBlock inorderBlock;
+@property (nonatomic, copy) BSTEnumeratorBlock inorderBlock;
 
 // 后序遍历block
-@property (nonatomic, copy) BTEnumeratorBlock postorderBlock;
+@property (nonatomic, copy) BSTEnumeratorBlock postorderBlock;
 
+// 层序遍历block
+//@property (nonatomic, copy) BSTEnumeratorBlock levelBlock;
 
 @end
 
@@ -94,7 +97,7 @@
     }
 }
 
-- (void)preorderEnumerate:(BTEnumeratorBlock)block
+- (void)preorderEnumerate:(BSTEnumeratorBlock)block
 {
     isPreorderStop = false;
     self.preorderBlock = block;
@@ -124,7 +127,7 @@
     [self private_preorderEnumerate:node->right];
 }
 
-- (void)inorderEnumerate:(BTEnumeratorBlock)block
+- (void)inorderEnumerate:(BSTEnumeratorBlock)block
 {
     self.inorderBlock = block;
     self->isInorderStop = false;
@@ -151,7 +154,7 @@
     [self private_inorderEnumerate:node->right];
 }
 
-- (void)postorderEnumerate:(BTEnumeratorBlock)block
+- (void)postorderEnumerate:(BSTEnumeratorBlock)block
 {
     self->isPostorderStop = false;
     self.postorderBlock = block;
@@ -176,6 +179,44 @@
     }
     if (self.postorderBlock) {
         self.postorderBlock(node->value, &isPostorderStop);
+    }
+}
+
+
+
+- (void)levelOrderEnumerate:(BSTEnumeratorBlock)block
+{
+    if (root == nil) {
+        return;
+    }
+    
+    self->isLevelStop = NO;
+    
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:root];
+    
+    while (array.count > 0) {
+        
+        // 1.出队
+        BSTNode *lastNode = [array lastObject];
+        [array removeLastObject];
+        
+        if (block) {
+            block(lastNode->value, &isLevelStop);
+        }
+        
+        if (self->isLevelStop) {
+            return;
+        }
+        
+        // 2.把左右结点分别入队
+        if (lastNode->left) {
+            [array insertObject:lastNode->left atIndex:0];
+        }
+        
+        if (lastNode->right) {
+            [array insertObject:lastNode->right atIndex:0];
+        }
     }
 }
 

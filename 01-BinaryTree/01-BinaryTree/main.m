@@ -16,15 +16,27 @@
 static void func01()
 {
     BinarySearchTree *tree = [[BinarySearchTree alloc] init];
+    
     printf("源始数据:\n");
-    for (int i= 0; i < 10; i++) {
-        
-        int value = arc4random_uniform(1000) + 1;
-        
+    // 测试数据1
+//    for (int i= 0; i < 10; i++) {
+//
+//        int value = arc4random_uniform(1000) + 1;
+//
+//        [tree insertItem:@(value)];
+//
+//        printf("%d, ", value);
+//    }
+    
+    // 测试数据2
+    int arr[] = {7, 4, 2, 1, 3, 5, 9, 8, 11, 10, 12};
+    int arrLen = sizeof(arr) / sizeof(int);
+    for (int i = 0; i < arrLen; i++) {
+        int value = arr[i];
         [tree insertItem:@(value)];
-        
         printf("%d, ", value);
     }
+    
     
     printf("\n");
     
@@ -34,9 +46,9 @@ static void func01()
         NSString *valueDescription = [item description];
         printf("%s, ", [valueDescription UTF8String]);
         index++;
-        if (index == 4) {
-            *stop = YES;
-        }
+//        if (index == 4) {
+//            *stop = YES;
+//        }
     }];
     printf("\n");
     
@@ -58,12 +70,24 @@ static void func01()
         NSString *valueDescription = [item description];
         printf("%s, ", [valueDescription UTF8String]);
         index++;
-        if (index == 3) {
-            *stop = YES;
-        }
+//        if (index == 3) {
+//            *stop = YES;
+//        }
     }];
     printf("\n");
     
+    
+    printf("层序遍历:\n");
+    index = 0;
+    [tree levelOrderEnumerate:^(id<FSComparable> item, BOOL *stop) {
+        NSString *valueDescription = [item description];
+        printf("%s, ", [valueDescription UTF8String]);
+        index++;
+//        if (index == 8) {
+//            *stop = YES;
+//        }
+    }];
+    printf("\n");
 }
 
 int main(int argc, const char * argv[]) {
