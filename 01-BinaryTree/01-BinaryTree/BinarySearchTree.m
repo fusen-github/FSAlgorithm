@@ -1,30 +1,30 @@
 //
-//  BinaryTree.m
+//  BinarySearchTree.m
 //  01-BinaryTree
 //
 //  Created by 付森 on 2021/7/10.
 //
 
-#import "BinaryTree.h"
+#import "BinarySearchTree.h"
 
-@interface BTNode : NSObject
+@interface BSTNode : NSObject
 {
 @public
     id<FSComparable> value;
-    BTNode *left;
-    BTNode *right;
-    BTNode *parent;
+    BSTNode *left;
+    BSTNode *right;
+    BSTNode *parent;
 }
 
-+ (instancetype)nodeByValue:(id<FSComparable>)value parent:(BTNode *)parent;
++ (instancetype)nodeByValue:(id<FSComparable>)value parent:(BSTNode *)parent;
 
 @end
 
-@implementation BTNode
+@implementation BSTNode
 
-+ (instancetype)nodeByValue:(id<FSComparable>)value parent:(BTNode *)parent
++ (instancetype)nodeByValue:(id<FSComparable>)value parent:(BSTNode *)parent
 {
-    BTNode *node = [[BTNode alloc] init];
+    BSTNode *node = [[BSTNode alloc] init];
     node->value = value;
     node->parent = parent;
     return node;
@@ -32,10 +32,11 @@
 
 @end
 
-@interface BinaryTree ()
+@interface BinarySearchTree ()
 {
     BOOL isPreorderStop;
     BOOL isInorderStop;
+    BOOL isPostorderStop;
 }
 // 前序遍历block
 @property (nonatomic, copy) BTEnumeratorBlock preorderBlock;
@@ -43,13 +44,16 @@
 // 中序遍历block
 @property (nonatomic, copy) BTEnumeratorBlock inorderBlock;
 
+// 后序遍历block
+@property (nonatomic, copy) BTEnumeratorBlock postorderBlock;
+
 
 @end
 
-@implementation BinaryTree
+@implementation BinarySearchTree
 {
     NSUInteger length;
-    BTNode *root;
+    BSTNode *root;
     
 }
 
@@ -61,12 +65,12 @@
     }
     
     if (root == nil) {
-        root = [BTNode nodeByValue:item parent:nil];
+        root = [BSTNode nodeByValue:item parent:nil];
         return;
     }
     
-    BTNode *node = root;
-    BTNode *needParent = nil;
+    BSTNode *node = root;
+    BSTNode *needParent = nil;
     BOOL isLeft = NO;
     while (node) {
         
@@ -81,7 +85,7 @@
         }
     }
     
-    BTNode *newNode = [BTNode nodeByValue:item parent:needParent];
+    BSTNode *newNode = [BSTNode nodeByValue:item parent:needParent];
     
     if (isLeft) {
         needParent->left = newNode;
@@ -99,9 +103,9 @@
 
 
 
-- (void)private_preorderEnumerate:(BTNode *)node
+- (void)private_preorderEnumerate:(BSTNode *)node
 {
-    if (node == nil) {
+    if (node == nil || isPreorderStop) {
         return;
     }
     
@@ -127,7 +131,7 @@
     [self private_inorderEnumerate:root];
 }
 
-- (void)private_inorderEnumerate:(BTNode *)node
+- (void)private_inorderEnumerate:(BSTNode *)node
 {
     if (node == nil || isInorderStop) {
         return;
@@ -145,6 +149,34 @@
         return;
     }
     [self private_inorderEnumerate:node->right];
+}
+
+- (void)postorderEnumerate:(BTEnumeratorBlock)block
+{
+    self->isPostorderStop = false;
+    self.postorderBlock = block;
+    [self private_postorderEnumerate:root];
+}
+
+- (void)private_postorderEnumerate:(BSTNode *)node
+{
+    if (node == nil || isPostorderStop) {
+        return;
+    }
+    
+    [self private_postorderEnumerate:node->left];
+    
+    if (isPostorderStop) {
+        return;
+    }
+    [self private_postorderEnumerate:node->right];
+    
+    if (isPostorderStop) {
+        return;
+    }
+    if (self.postorderBlock) {
+        self.postorderBlock(node->value, &isPostorderStop);
+    }
 }
 
 @end

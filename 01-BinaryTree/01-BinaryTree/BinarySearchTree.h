@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^BTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
 
-@interface BinaryTree : NSObject
+@interface BinarySearchTree : NSObject
 
 - (void)insertItem:(id<FSComparable>)item;
 
@@ -32,6 +32,11 @@ typedef void(^BTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
  */
 - (void)inorderEnumerate:(BTEnumeratorBlock)block;
 
+/**
+ 后序变历：把根结点放在最后
+ 先访问左子树、再访问右子树、最后访问根结点
+ */
+- (void)postorderEnumerate:(BTEnumeratorBlock)block;
 
 @end
 

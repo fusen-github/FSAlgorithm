@@ -1,12 +1,12 @@
 //
 //  main.m
-//  01-BinaryTree
+//  01-BinarySearchTree
 //
 //  Created by 付森 on 2021/7/10.
 //
 
 #import <Foundation/Foundation.h>
-#import "BinaryTree.h"
+#import "BinarySearchTree.h"
 #import "NSNumber+Extension.h"
 
 
@@ -15,7 +15,7 @@
  */
 static void func01()
 {
-    BinaryTree *tree = [[BinaryTree alloc] init];
+    BinarySearchTree *tree = [[BinarySearchTree alloc] init];
     printf("源始数据:\n");
     for (int i= 0; i < 10; i++) {
         
@@ -46,7 +46,19 @@ static void func01()
         NSString *valueDescription = [item description];
         printf("%s, ", [valueDescription UTF8String]);
         index++;
-        if (index == 8) {
+//        if (index == 8) {
+//            *stop = YES;
+//        }
+    }];
+    printf("\n");
+    
+    printf("后序遍历:\n");
+    index = 0;
+    [tree postorderEnumerate:^(id<FSComparable> item, BOOL *stop) {
+        NSString *valueDescription = [item description];
+        printf("%s, ", [valueDescription UTF8String]);
+        index++;
+        if (index == 3) {
             *stop = YES;
         }
     }];
