@@ -37,7 +37,6 @@
     BOOL isPreorderStop;
     BOOL isInorderStop;
     BOOL isPostorderStop;
-    BOOL isLevelStop;
 }
 // 前序遍历block
 @property (nonatomic, copy) BSTEnumeratorBlock preorderBlock;
@@ -47,9 +46,6 @@
 
 // 后序遍历block
 @property (nonatomic, copy) BSTEnumeratorBlock postorderBlock;
-
-// 层序遍历block
-//@property (nonatomic, copy) BSTEnumeratorBlock levelBlock;
 
 @end
 
@@ -190,7 +186,7 @@
         return;
     }
     
-    self->isLevelStop = NO;
+    BOOL isLevelStop = NO;
     
     NSMutableArray *array = [NSMutableArray array];
     [array addObject:root];
@@ -205,7 +201,7 @@
             block(lastNode->value, &isLevelStop);
         }
         
-        if (self->isLevelStop) {
+        if (isLevelStop) {
             return;
         }
         
