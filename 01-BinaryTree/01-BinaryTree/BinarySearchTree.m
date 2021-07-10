@@ -267,4 +267,46 @@
     }
 }
 
+- (NSUInteger)treeHeight
+{
+    if (root == nil) {
+        return 0;
+    }
+    // 树的高度
+    NSUInteger height = 0;
+    
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:root];
+    
+    // 记录每一层的结点数
+    NSUInteger levelCount = array.count;
+    
+    while (array.count > 0) {
+        
+        // 1.取出队列的队头结点
+        BSTNode *lastNode = array.lastObject;
+        [array removeLastObject];
+        
+        // 2.该层减少一个
+        levelCount--;
+        
+        // 3. 添加叶子结点到队尾
+        if (lastNode->left) {
+            [array insertObject:lastNode->left atIndex:0];
+        }
+        
+        if (lastNode->right) {
+            [array insertObject:lastNode->right atIndex:0];
+        }
+        
+        // 4.当某层数量==0时，array中的元素就是下一层的所有元素
+        if (levelCount == 0) {
+            levelCount = array.count;
+            height++;
+        }
+    }
+    
+    return height;
+}
+
 @end

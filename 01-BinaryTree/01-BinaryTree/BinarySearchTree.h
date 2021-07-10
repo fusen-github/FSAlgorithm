@@ -57,6 +57,11 @@ typedef void(^BSTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
  */
 - (void)levelOrderEnumerate:(BSTEnumeratorBlock)block;
 
+/**
+ 获取二叉树的高度
+ */
+- (NSUInteger)treeHeight;
+
 @end
 
 NS_ASSUME_NONNULL_END

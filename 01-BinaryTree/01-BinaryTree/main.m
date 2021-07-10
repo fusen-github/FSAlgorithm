@@ -105,6 +105,7 @@ static void func01()
     printf("\n");
     
     
+    NSLog(@"树的高度:%td", [tree treeHeight]);
     
     
 }
