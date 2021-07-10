@@ -16,7 +16,7 @@
 static void func01()
 {
     BinaryTree *tree = [[BinaryTree alloc] init];
-    
+    printf("源始数据:\n");
     for (int i= 0; i < 10; i++) {
         
         int value = arc4random_uniform(1000) + 1;
@@ -27,20 +27,29 @@ static void func01()
     }
     
     printf("\n");
-        
+    
+    printf("前序遍历:\n");
     __block int index = 0;
     [tree preorderEnumerate:^(id<FSComparable> item, BOOL *stop) {
-        
         NSString *valueDescription = [item description];
         printf("%s, ", [valueDescription UTF8String]);
-        
         index++;
-        
-        if (index == 5) {
+        if (index == 4) {
             *stop = YES;
         }
     }];
+    printf("\n");
     
+    printf("中序遍历:\n");
+    index = 0;
+    [tree inorderEnumerate:^(id<FSComparable> item, BOOL *stop) {
+        NSString *valueDescription = [item description];
+        printf("%s, ", [valueDescription UTF8String]);
+        index++;
+        if (index == 8) {
+            *stop = YES;
+        }
+    }];
     printf("\n");
     
 }

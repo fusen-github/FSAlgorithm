@@ -17,11 +17,21 @@ typedef void(^BTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
 - (void)insertItem:(id<FSComparable>)item;
 
 /*
- 二叉树遍历:
- 1、前序遍历-先访问根结点、再访问左子树、最后访问右子树
+ 二叉树遍历
  */
 
+/**
+ 前序遍历：就是把根结点放在前面先遍历
+ 先访问根结点、再访问左子树、最后访问右子树
+ */
 - (void)preorderEnumerate:(BTEnumeratorBlock)block;
+
+/**
+ 中序遍历：把根结点放在中间遍历
+ 先访问左子树、再访问根结点、最后遍历右子树
+ */
+- (void)inorderEnumerate:(BTEnumeratorBlock)block;
+
 
 @end
 

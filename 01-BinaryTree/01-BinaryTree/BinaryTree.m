@@ -33,8 +33,15 @@
 @end
 
 @interface BinaryTree ()
-
+{
+    BOOL isPreorderStop;
+    BOOL isInorderStop;
+}
+// 前序遍历block
 @property (nonatomic, copy) BTEnumeratorBlock preorderBlock;
+
+// 中序遍历block
+@property (nonatomic, copy) BTEnumeratorBlock inorderBlock;
 
 
 @end
@@ -85,9 +92,12 @@
 
 - (void)preorderEnumerate:(BTEnumeratorBlock)block
 {
+    isPreorderStop = false;
     self.preorderBlock = block;
     [self private_preorderEnumerate:root];
 }
+
+
 
 - (void)private_preorderEnumerate:(BTNode *)node
 {
@@ -95,17 +105,46 @@
         return;
     }
     
-    BOOL isStop = false;
-    
     if (self.preorderBlock) {
-        self.preorderBlock(node->value, &isStop);
+        self.preorderBlock(node->value, &isPreorderStop);
     }
     
-    if (isStop) {
+    if (isPreorderStop) {
         return;
     }
+    
     [self private_preorderEnumerate:node->left];
+    if (isPreorderStop) {
+        return;
+    }
     [self private_preorderEnumerate:node->right];
+}
+
+- (void)inorderEnumerate:(BTEnumeratorBlock)block
+{
+    self.inorderBlock = block;
+    self->isInorderStop = false;
+    [self private_inorderEnumerate:root];
+}
+
+- (void)private_inorderEnumerate:(BTNode *)node
+{
+    if (node == nil || isInorderStop) {
+        return;
+    }
+    // 先访问左子树
+    [self private_inorderEnumerate:node->left];
+    
+    if (isInorderStop) {
+        return;
+    }
+    if (self.inorderBlock) {
+        self.inorderBlock(node->value, &isInorderStop);
+    }
+    if (isInorderStop) {
+        return;
+    }
+    [self private_inorderEnumerate:node->right];
 }
 
 @end
