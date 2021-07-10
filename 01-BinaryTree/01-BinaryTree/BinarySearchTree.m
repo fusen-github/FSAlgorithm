@@ -374,4 +374,36 @@
     return true;
 }
 
+/**
+ 翻转二叉树，就是遍历二叉树，然后交换当前遍历结点的所有子树
+ 四种遍历方式都可以
+ */
+- (void)reverse
+{
+    if (root == nil) {
+        return;
+    }
+    
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:root];
+    
+    while (array.count) {
+        
+        BSTNode *last = array.lastObject;
+        [array removeLastObject];
+        
+        BSTNode *tmp = last->left;
+        last->left = last->right;
+        last->right = tmp;
+        
+        if (last->left) {
+            [array insertObject:last->left atIndex:0];
+        }
+        
+        if (last->right) {
+            [array insertObject:last->right atIndex:0];
+        }
+    }
+}
+
 @end

@@ -67,6 +67,11 @@ typedef void(^BSTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
  */
 - (BOOL)isComplectTree;
 
+/**
+ 翻转二叉树
+ */
+- (void)reverse;
+
 @end
 
 NS_ASSUME_NONNULL_END
