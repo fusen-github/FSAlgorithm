@@ -62,6 +62,11 @@ typedef void(^BSTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
  */
 - (NSUInteger)treeHeight;
 
+/**
+ 判断是否是完全二叉树
+ */
+- (BOOL)isComplectTree;
+
 @end
 
 NS_ASSUME_NONNULL_END

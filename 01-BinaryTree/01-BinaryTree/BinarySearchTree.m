@@ -18,6 +18,14 @@
 
 + (instancetype)nodeByValue:(id<FSComparable>)value parent:(BSTNode *)parent;
 
+/**
+ 是否是叶子结点
+ */
+- (BOOL)isLeafNode;
+
+// 是否是满结点
+- (BOOL)isFullNode;
+
 @end
 
 @implementation BSTNode
@@ -28,6 +36,26 @@
     node->value = value;
     node->parent = parent;
     return node;
+}
+
+- (BOOL)isLeafNode
+{
+    return self->left == nil && self->right == nil;
+}
+
+- (BOOL)isFullNode
+{
+    return self->left != nil && self->right != nil;
+}
+
+- (BOOL)isSingleLeft
+{
+    return self->left != nil && self->right == nil;
+}
+
+- (BOOL)isSingleRight
+{
+    return self->left == nil && self->right != nil;
 }
 
 @end
@@ -307,6 +335,49 @@
     }
     
     return height;
+}
+
+- (BOOL)isComplectTree
+{
+    if (root == nil) {
+        return NO;
+    }
+    
+    NSMutableArray *array = [NSMutableArray array];
+    [array addObject:root];
+    
+    BOOL leafFlag = NO;
+    
+    while (array.count) {
+        
+        BSTNode *node = array.lastObject;
+        [array removeLastObject];
+        
+        // 
+        if (leafFlag && ![node isLeafNode]) {
+            return NO;
+        }
+        
+        // 可以确定不是完全二叉树
+        if (node->left == nil && node->right) {
+            return NO;
+        }
+        else if ([node isLeafNode] || [node isSingleLeft])
+        {
+            leafFlag = YES;
+        }
+        
+        if (node->left) {
+            [array insertObject:node->left atIndex:0];
+        }
+        
+        if (node->right) {
+            [array insertObject:node->right atIndex:0];
+        }
+        
+    }
+    
+    return true;
 }
 
 @end
