@@ -406,4 +406,56 @@
     }
 }
 
+/**
+ 前驱定义：中序遍历时，某个结点的前一个结点
+ 返回给定结点的前驱结点
+ */
+- (BSTNode *)previousNode:(BSTNode *)node
+{
+    // 目标节点
+    BSTNode *target = nil;
+    
+    // 1. 如果结点有左子树，那么前驱肯定在左子树的最右下角
+    if (node->left != nil) {
+        target = node->left;
+        while (target->right) {
+            target = target->right;
+        }
+        return target;
+    }
+    
+    // 2. 给定结点没有左子树，那么前驱在它的父节点中
+    target = node;
+    while (target->parent && target == target->parent->left) {
+        target = target->parent;
+    }
+    
+    return target->parent;
+}
+
+/**
+ 后驱定义：中序遍历时，某个结点的后一个结点
+ 返回给定结点的后续结点
+ */
+- (BSTNode *)nextNode:(BSTNode *)node
+{
+    BSTNode *target = node;
+    
+    if (node->right) {
+        target = node->right;
+        
+        while (target->left) {
+            target = target->left;
+        }
+        return target;
+    }
+    
+    target = node;
+    while (target->parent && target == target->parent->right) {
+        target = target->parent;
+    }
+    
+    return target->parent;
+}
+
 @end
