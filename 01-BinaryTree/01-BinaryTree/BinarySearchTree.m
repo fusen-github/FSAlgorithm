@@ -32,6 +32,52 @@
 
 @end
 
+@interface BSTIterator ()
+
+@property (nonatomic, copy) BSTEnumeratorBlock block;
+
+@property (nonatomic, assign) BOOL isStop;
+
+@end
+
+@implementation BSTIterator
+
++ (instancetype)iteratorEnumerator:(BSTEnumeratorBlock)block
+{
+    BSTIterator *it = [[BSTIterator alloc] init];
+    it.isStop = NO;
+    it.block = block;
+    return it;
+}
+
+- (void)preorderIterate:(BSTNode *)node
+{
+    if (node == nil || _isStop) {
+        return;
+    }
+    
+    if (self.block) {
+        self.block(node->value, &_isStop);
+    }
+    
+    if (_isStop) {
+        return;
+    }
+    
+    [self preorderIterate:node->left];
+    if (_isStop) {
+        return;
+    }
+    [self preorderIterate:node->right];
+}
+
+- (void)dealloc
+{
+    NSLog(@"Iterator dealloc");
+}
+
+@end
+
 @interface BinarySearchTree ()
 {
     BOOL isPreorderStop;
@@ -100,8 +146,6 @@
     [self private_preorderEnumerate:root];
 }
 
-
-
 - (void)private_preorderEnumerate:(BSTNode *)node
 {
     if (node == nil || isPreorderStop) {
@@ -122,6 +166,13 @@
     }
     [self private_preorderEnumerate:node->right];
 }
+
+
+- (void)preorderIterate:(BSTIterator *)iterator
+{
+    [iterator preorderIterate:root];
+}
+
 
 - (void)inorderEnumerate:(BSTEnumeratorBlock)block
 {

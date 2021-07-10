@@ -52,6 +52,21 @@ static void func01()
     }];
     printf("\n");
     
+    printf("迭代器-前序遍历:\n");
+    index = 0;
+    BSTIterator *it =
+    [BSTIterator iteratorEnumerator:^(id<FSComparable> item, BOOL *stop) {
+        NSString *valueDescription = [item description];
+        printf("%s, ", [valueDescription UTF8String]);
+        index++;
+//        if (index == 5) {
+//            *stop = YES;
+//        }
+    }];
+    [tree preorderIterate:it];
+    printf("\n");
+    
+    
     printf("中序遍历:\n");
     index = 0;
     [tree inorderEnumerate:^(id<FSComparable> item, BOOL *stop) {
@@ -88,6 +103,10 @@ static void func01()
 //        }
     }];
     printf("\n");
+    
+    
+    
+    
 }
 
 int main(int argc, const char * argv[]) {

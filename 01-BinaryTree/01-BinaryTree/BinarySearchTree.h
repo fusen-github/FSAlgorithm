@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 typedef void(^BSTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
 
+@interface BSTIterator : NSObject
+
++ (instancetype)iteratorEnumerator:(BSTEnumeratorBlock)block;
+
+@end
+
 @interface BinarySearchTree : NSObject
 
 - (void)insertItem:(id<FSComparable>)item;
@@ -25,6 +31,9 @@ typedef void(^BSTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
  先访问根结点、再访问左子树、最后访问右子树
  */
 - (void)preorderEnumerate:(BSTEnumeratorBlock)block;
+
+/** 前序迭代*/
+- (void)preorderIterate:(BSTIterator *)iterator;
 
 /**
  中序遍历：把根结点放在中间遍历
