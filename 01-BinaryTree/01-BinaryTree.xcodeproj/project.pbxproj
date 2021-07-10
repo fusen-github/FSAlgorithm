@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		049D312D26992E6D000A4958 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D312C26992E6D000A4958 /* main.m */; };
+		049D313626993762000A4958 /* BinaryTree.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D313526993762000A4958 /* BinaryTree.m */; };
+		049D313D269940A7000A4958 /* NSNumber+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D313C269940A7000A4958 /* NSNumber+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,11 @@
 /* Begin PBXFileReference section */
 		049D312926992E6D000A4958 /* 01-BinaryTree */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "01-BinaryTree"; sourceTree = BUILT_PRODUCTS_DIR; };
 		049D312C26992E6D000A4958 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		049D313426993762000A4958 /* BinaryTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BinaryTree.h; sourceTree = "<group>"; };
+		049D313526993762000A4958 /* BinaryTree.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BinaryTree.m; sourceTree = "<group>"; };
+		049D313826993782000A4958 /* FSComparable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSComparable.h; sourceTree = "<group>"; };
+		049D313B269940A7000A4958 /* NSNumber+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Extension.h"; sourceTree = "<group>"; };
+		049D313C269940A7000A4958 /* NSNumber+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +65,21 @@
 			isa = PBXGroup;
 			children = (
 				049D312C26992E6D000A4958 /* main.m */,
+				049D313A26994094000A4958 /* Category */,
+				049D313426993762000A4958 /* BinaryTree.h */,
+				049D313526993762000A4958 /* BinaryTree.m */,
+				049D313826993782000A4958 /* FSComparable.h */,
 			);
 			path = "01-BinaryTree";
+			sourceTree = "<group>";
+		};
+		049D313A26994094000A4958 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				049D313B269940A7000A4958 /* NSNumber+Extension.h */,
+				049D313C269940A7000A4958 /* NSNumber+Extension.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +138,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049D313626993762000A4958 /* BinaryTree.m in Sources */,
+				049D313D269940A7000A4958 /* NSNumber+Extension.m in Sources */,
 				049D312D26992E6D000A4958 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
