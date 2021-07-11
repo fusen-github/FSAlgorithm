@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:LeetCode/LeetCode.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:01-BinaryTree/01-BinaryTree.xcodeproj">
    </FileRef>
    <FileRef
