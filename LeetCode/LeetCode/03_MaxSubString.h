@@ -9,6 +9,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+ 求最长无重复字符的子串
+ */
 @interface MaxSubString : NSObject
 
 @end

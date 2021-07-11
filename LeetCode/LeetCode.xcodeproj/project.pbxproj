@@ -11,6 +11,7 @@
 		049D317A269ADD77000A4958 /* 01_SumOfTwoNum.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D3179269ADD77000A4958 /* 01_SumOfTwoNum.m */; };
 		049D317E269AE150000A4958 /* 02_AddTwoNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D317D269AE150000A4958 /* 02_AddTwoNumbers.m */; };
 		049D3182269AEB26000A4958 /* 03_MaxSubString.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D3181269AEB26000A4958 /* 03_MaxSubString.m */; };
+		049D3186269B211D000A4958 /* 04_Palindrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D3185269B211D000A4958 /* 04_Palindrome.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		049D317D269AE150000A4958 /* 02_AddTwoNumbers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = 02_AddTwoNumbers.m; sourceTree = "<group>"; };
 		049D3180269AEB26000A4958 /* 03_MaxSubString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 03_MaxSubString.h; sourceTree = "<group>"; };
 		049D3181269AEB26000A4958 /* 03_MaxSubString.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = 03_MaxSubString.m; sourceTree = "<group>"; };
+		049D3184269B211D000A4958 /* 04_Palindrome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 04_Palindrome.h; sourceTree = "<group>"; };
+		049D3185269B211D000A4958 /* 04_Palindrome.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = 04_Palindrome.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +76,8 @@
 				049D317D269AE150000A4958 /* 02_AddTwoNumbers.m */,
 				049D3180269AEB26000A4958 /* 03_MaxSubString.h */,
 				049D3181269AEB26000A4958 /* 03_MaxSubString.m */,
+				049D3184269B211D000A4958 /* 04_Palindrome.h */,
+				049D3185269B211D000A4958 /* 04_Palindrome.m */,
 			);
 			path = LeetCode;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				049D317E269AE150000A4958 /* 02_AddTwoNumbers.m in Sources */,
+				049D3186269B211D000A4958 /* 04_Palindrome.m in Sources */,
 				049D3182269AEB26000A4958 /* 03_MaxSubString.m in Sources */,
 				049D316F269ADCD3000A4958 /* main.m in Sources */,
 				049D317A269ADD77000A4958 /* 01_SumOfTwoNum.m in Sources */,
