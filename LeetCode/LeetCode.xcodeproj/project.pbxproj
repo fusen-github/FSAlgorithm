@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		049D316F269ADCD3000A4958 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D316E269ADCD3000A4958 /* main.m */; };
 		049D317A269ADD77000A4958 /* 01_SumOfTwoNum.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D3179269ADD77000A4958 /* 01_SumOfTwoNum.m */; };
+		049D317E269AE150000A4958 /* 02_AddTwoNumbers.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D317D269AE150000A4958 /* 02_AddTwoNumbers.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,8 @@
 		049D316E269ADCD3000A4958 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		049D3178269ADD77000A4958 /* 01_SumOfTwoNum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 01_SumOfTwoNum.h; sourceTree = "<group>"; };
 		049D3179269ADD77000A4958 /* 01_SumOfTwoNum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = 01_SumOfTwoNum.m; sourceTree = "<group>"; };
+		049D317C269AE150000A4958 /* 02_AddTwoNumbers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 02_AddTwoNumbers.h; sourceTree = "<group>"; };
+		049D317D269AE150000A4958 /* 02_AddTwoNumbers.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = 02_AddTwoNumbers.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +66,8 @@
 				049D316E269ADCD3000A4958 /* main.m */,
 				049D3178269ADD77000A4958 /* 01_SumOfTwoNum.h */,
 				049D3179269ADD77000A4958 /* 01_SumOfTwoNum.m */,
+				049D317C269AE150000A4958 /* 02_AddTwoNumbers.h */,
+				049D317D269AE150000A4958 /* 02_AddTwoNumbers.m */,
 			);
 			path = LeetCode;
 			sourceTree = "<group>";
@@ -123,6 +128,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				049D317E269AE150000A4958 /* 02_AddTwoNumbers.m in Sources */,
 				049D316F269ADCD3000A4958 /* main.m in Sources */,
 				049D317A269ADD77000A4958 /* 01_SumOfTwoNum.m in Sources */,
 			);
