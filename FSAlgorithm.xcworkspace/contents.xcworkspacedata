@@ -4,4 +4,7 @@
    <FileRef
       location = "group:01-BinaryTree/01-BinaryTree.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:02-Sort/02-Sort.xcodeproj">
+   </FileRef>
 </Workspace>
