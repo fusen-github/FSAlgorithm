@@ -122,6 +122,8 @@
         next->value = flag;
         ansFooter->next = next;
     }
+    
+    // 得到ansHeader直接返回
 }
 
 @end
