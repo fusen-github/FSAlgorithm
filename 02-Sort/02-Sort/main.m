@@ -8,11 +8,12 @@
 #import <Foundation/Foundation.h>
 #import "FSLogger.h"
 #import "01-BubbleSort.h"
+#import "02-SelectSort.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
        
-        bubbleSort_04();
+        selectSort_1();
     }
     return 0;
 }

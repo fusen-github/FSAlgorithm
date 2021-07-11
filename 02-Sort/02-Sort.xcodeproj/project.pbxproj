@@ -27,6 +27,8 @@
 		049D314D2699A5E9000A4958 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		049D315A2699A887000A4958 /* FSLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSLogger.h; sourceTree = "<group>"; };
 		049D315D2699AD8D000A4958 /* 01-BubbleSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "01-BubbleSort.h"; sourceTree = "<group>"; };
+		049D315F269ACA41000A4958 /* 02-SelectSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "02-SelectSort.h"; sourceTree = "<group>"; };
+		049D3161269ACCA4000A4958 /* 03-HeapSort.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "03-HeapSort.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,8 @@
 			children = (
 				049D314D2699A5E9000A4958 /* main.m */,
 				049D315D2699AD8D000A4958 /* 01-BubbleSort.h */,
+				049D315F269ACA41000A4958 /* 02-SelectSort.h */,
+				049D3161269ACCA4000A4958 /* 03-HeapSort.h */,
 				049D315A2699A887000A4958 /* FSLogger.h */,
 			);
 			path = "02-Sort";
