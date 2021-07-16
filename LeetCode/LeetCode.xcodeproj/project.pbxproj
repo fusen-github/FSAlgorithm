@@ -13,6 +13,7 @@
 		049D3182269AEB26000A4958 /* 03_MaxSubString.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D3181269AEB26000A4958 /* 03_MaxSubString.m */; };
 		049D3186269B211D000A4958 /* 04_Palindrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D3185269B211D000A4958 /* 04_Palindrome.m */; };
 		049D318A269B3872000A4958 /* 05_CharPair.m in Sources */ = {isa = PBXBuildFile; fileRef = 049D3189269B3872000A4958 /* 05_CharPair.m */; };
+		049D31B026A14692000A4958 /* 06_ReverseWord.mm in Sources */ = {isa = PBXBuildFile; fileRef = 049D31AF26A14692000A4958 /* 06_ReverseWord.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,6 +41,8 @@
 		049D3185269B211D000A4958 /* 04_Palindrome.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = 04_Palindrome.m; sourceTree = "<group>"; };
 		049D3188269B3872000A4958 /* 05_CharPair.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 05_CharPair.h; sourceTree = "<group>"; };
 		049D3189269B3872000A4958 /* 05_CharPair.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = 05_CharPair.m; sourceTree = "<group>"; };
+		049D31AE26A14692000A4958 /* 06_ReverseWord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = 06_ReverseWord.h; sourceTree = "<group>"; };
+		049D31AF26A14692000A4958 /* 06_ReverseWord.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = 06_ReverseWord.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 				049D3185269B211D000A4958 /* 04_Palindrome.m */,
 				049D3188269B3872000A4958 /* 05_CharPair.h */,
 				049D3189269B3872000A4958 /* 05_CharPair.m */,
+				049D31AE26A14692000A4958 /* 06_ReverseWord.h */,
+				049D31AF26A14692000A4958 /* 06_ReverseWord.mm */,
 			);
 			path = LeetCode;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				049D317E269AE150000A4958 /* 02_AddTwoNumbers.m in Sources */,
 				049D3186269B211D000A4958 /* 04_Palindrome.m in Sources */,
 				049D3182269AEB26000A4958 /* 03_MaxSubString.m in Sources */,
+				049D31B026A14692000A4958 /* 06_ReverseWord.mm in Sources */,
 				049D316F269ADCD3000A4958 /* main.m in Sources */,
 				049D318A269B3872000A4958 /* 05_CharPair.m in Sources */,
 				049D317A269ADD77000A4958 /* 01_SumOfTwoNum.m in Sources */,
