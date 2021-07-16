@@ -111,54 +111,43 @@ using namespace std;
 {
     std::string str([string UTF8String]);
     
-    // 保存去掉多余空格后的字符数组
+    // 去掉多余空格后的字符数组
     char trimChars[str.length()];
     
     // 新字符串的长度
-    int newLen = 0;
-    // 这个for循环结束后tmpChars里是去除多余空格的字符串，且charsIndex就是字符串的长度
+    int trimLen = 0;
+    
     for (int i = 0; i < str.length(); i++) {
         char ch = str.at(i);
         
-        if (newLen == 0) {
-            if (ch == ' ') {
+        if (ch == ' ') {
+            
+            if (trimLen == 0) {
                 continue;
-            }else {
-                trimChars[newLen++] = ch;
             }
-        }
-        else {
-            if (ch == ' ') {
-                // 取出当前tmpChars的最后一个字符
-                char last = trimChars[newLen - 1];
-                
-                // 判断最后一个字符是否是空格
-                if (last != ' ') {
-                    trimChars[newLen++] = ch;
-                }
-                
-            }else {
-                trimChars[newLen++] = ch;
+            // 取出当前tmpChars的最后一个字符
+            char last = trimChars[trimLen - 1];
+            // 判断最后一个字符是否是空格
+            if (last != ' ') {
+                trimChars[trimLen++] = ch;
             }
+            
+        }else {
+            trimChars[trimLen++] = ch;
         }
     }
     
     // trimChars的newLen-1位可能是空格
-    if (trimChars[newLen - 1] == ' ') {
-        newLen--;
+    if (trimChars[trimLen - 1] == ' ') {
+        trimLen--;
     }
     
-    /*
-     "are you ok"
-     "ok you are"
-     */
-    
     int ansLen = 0;
-    char ansString[newLen + 1];
+    char ansString[trimLen + 1];
     
     // 无多余空格的字符串
-    int right = newLen;
-    for (int i = newLen - 1; i >= 0; i--) {
+    int right = trimLen;
+    for (int i = trimLen - 1; i >= 0; i--) {
         char ch = trimChars[i];
         if (ch == ' ' || i == 0) {
             
@@ -178,7 +167,7 @@ using namespace std;
         }
     }
     
-    ansString[newLen] = '\0';
+    ansString[trimLen] = '\0';
     
     std::string ans(ansString);
     
@@ -189,6 +178,71 @@ using namespace std;
     
     return ocString;
 }
+
+/**
+ 根据左右索引，翻转字符串
+ */
+void reverseStringBetweenLeftAndRight(std::string &string, int left, int right)
+{
+    while (left < right) {
+        char ch = string[left];
+        string[left] = string[right];
+        string[right] = ch;
+        left++;
+        right--;
+    }
+}
+
++ (NSString *)reverseString_cpp_01:(NSString *)string
+{
+    std::string str([string UTF8String]);
+    // 1.去除str字符串中多余的空格
+    char trimChats[string.length + 1];
+    int trimLen = 0;
+    for (int i = 0; i < str.length(); i++) {
+        char ch = str.at(i);
+        if (ch == ' ') {
+            if (trimLen == 0) {
+                continue;
+            }
+            char last = trimChats[trimLen - 1];
+            if (last != ' ') {
+                trimChats[trimLen++] = ch;
+            }
+        }
+        else {
+            trimChats[trimLen++] = ch;
+        }
+    }
+    
+    if (trimChats[trimLen - 1] == ' ') {
+        trimLen--;
+    }
+    
+    // 去除多余空格后的std::string
+    std::string trimString(trimChats, trimLen);
+    std::cout << ">>" << trimString << "<<" << std::endl;
+    
+    // 2. 翻转trimString整个字符串
+    reverseStringBetweenLeftAndRight(trimString, 0, trimLen-1);
+    
+    std::cout << ">>" << trimString << "<<" << std::endl;
+    
+    // 3. 再次翻转trimString中的每个单词
+    int left = 0;
+    for (int i = 0; i < trimLen + 1; i++) {
+        if (i == trimLen || trimString.at(i) == ' ') {
+            reverseStringBetweenLeftAndRight(trimString, left, i-1);
+            std::cout << ">>" << trimString << "<<" << std::endl;
+            left = i + 1;
+        }
+    }
+    
+    std::cout << ">>" << trimString << "<<" << std::endl;
+    
+    return @"";
+}
+
 
 
 + (NSString *)reverseString_oc:(NSString *)string

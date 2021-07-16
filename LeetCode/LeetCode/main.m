@@ -12,8 +12,8 @@
 static void test06()
 {
     // Alice does not even like bob
-    NSString *aString = @"Alice does not even like bob";
-    NSString *ans = [ReverseWord reverseString_cpp:aString];
+    NSString *aString = @"  Alice does     not   even   like bob  ";
+    NSString *ans = [ReverseWord reverseString_cpp_01:aString];
     NSLog(@"%@", ans);
 }
 

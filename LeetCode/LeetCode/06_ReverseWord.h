@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSString *)reverseString_cpp:(NSString *)string;
 
++ (NSString *)reverseString_cpp_01:(NSString *)string;
+
 + (NSString *)reverseString_oc:(NSString *)string;
 
 @end
