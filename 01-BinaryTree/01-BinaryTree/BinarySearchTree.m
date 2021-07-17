@@ -201,6 +201,54 @@
     [iterator preorderIterate:root];
 }
 
+/**
+ 前序遍历—>循环
+ */
+- (void)preorderLoopEnumerate:(BSTEnumeratorBlock)block
+{
+    if (block == nil || root == nil) {
+        return;
+    }
+    
+    BOOL isStop = NO;
+    // 临时栈、保存“子树根”
+    NSMutableArray *stackArray = [NSMutableArray array];
+    
+    // 游标结点
+    BSTNode *node = root;
+    
+    // 结点对象不为nil 或者 栈里有数据
+    while (node || stackArray.count) {
+        
+        // 1.循环遍历左子树
+        while (node) {
+            // a.输出当前node
+            block(node->value, &isStop);
+            if (isStop) {
+                break;
+            }
+            // b.如果当前node是非叶子结点，则入栈（叶子结点无需入栈）
+            if (node->left || node->right) {
+                [stackArray addObject:node];
+            }
+            // c.游标指向下一个left子树
+            node = node->left;
+        }
+        
+        if (isStop) {
+            break;
+        }
+        
+        // 2.游标node==nil才来到这里，此时取出栈顶的right子树
+        if (stackArray.count) {
+            // a.pop栈顶元素
+            node = [stackArray lastObject];
+            [stackArray removeLastObject];
+            // b.拿到栈顶元素的右子树
+            node = node->right;
+        }
+    }
+}
 
 - (void)inorderEnumerate:(BSTEnumeratorBlock)block
 {
@@ -227,6 +275,47 @@
         return;
     }
     [self private_inorderEnumerate:node->right];
+}
+
+/**
+ 中序遍历—>循环
+ */
+- (void)inorderLoopEnumerate:(BSTEnumeratorBlock)block
+{
+    if (root == nil || block == nil) {
+        return;
+    }
+    
+    NSMutableArray *stack = [NSMutableArray array];
+    BOOL isStop = NO;
+    
+    // 游标Node
+    BSTNode *node = root;
+    while (node || stack.count) {
+        
+        if (isStop) {
+            break;
+        }
+        
+        // 该while结束后，栈顶元素就是下一个将要输出的对象
+        while (node) {
+            // 1.当前子树根入栈
+            [stack addObject:node];
+            // 2.获取当前子树的左子树根对象
+            node = node->left;
+        }
+        
+        if (stack.count) {
+            // 1.pop栈顶元素
+            node = [stack lastObject];
+            [stack removeLastObject];
+            // 2.输出栈顶元素
+            block(node->value, &isStop);
+            // 3.拿到右子树
+            node = node->right;
+        }
+        
+    }
 }
 
 - (void)postorderEnumerate:(BSTEnumeratorBlock)block
@@ -257,6 +346,107 @@
     }
 }
 
+/**
+ 后序遍历—>循环
+ 左右根
+ */
+- (void)postorderLoopEnumerate_01:(BSTEnumeratorBlock)block
+{
+    if (block == nil || root == nil) {
+        return;
+    }
+    
+    NSMutableArray *stack = [NSMutableArray array];
+    BOOL isStop = NO;
+    
+    // 游标结点
+    BSTNode *node = root;
+    
+    // 上次访问的结点
+    BSTNode *lastVisit = root;
+    
+    while (node || stack.count) {
+        
+        // 1.遍历左子树，并入栈
+        while (node) {
+            // a.入栈
+            [stack addObject:node];
+            // b.下一个左子树
+            node = node->left;
+        }
+        
+        // 2.游标指针，重新指向栈顶元素
+        node = stack.lastObject;
+        
+        if (node->right == nil || node->right == lastVisit) {
+            /* 是叶子结点直接输出 */
+            // 1.访问node
+            block(node->value, &isStop);
+            // 2.记录最后一次访问的node
+            lastVisit = node;
+            // 3.将游标指针置空
+            node = nil;
+            // 4.弹出栈顶元素
+            [stack removeLastObject];
+        }
+        else {
+            node = node->right;
+        }
+    }
+}
+
+/**
+ 后序遍历—>循环
+ 左右根
+ */
+- (void)postorderLoopEnumerate_02:(BSTEnumeratorBlock)block
+{
+    /*
+     思路:
+     
+     
+     */
+    
+    if (block == nil || root == nil) {
+        return;
+    }
+    
+    // 临时栈
+    NSMutableArray *tmpStack = [NSMutableArray array];
+    [tmpStack addObject:root];
+    
+    NSMutableArray *ansStack = [NSMutableArray array];
+    
+    // 游标结点
+    BSTNode *node = nil;
+    
+    while (tmpStack.count) {
+        
+        node = tmpStack.lastObject;
+        [tmpStack removeLastObject];
+        
+        [ansStack addObject:node];
+        
+        if (node->left) {
+            [tmpStack addObject:node->left];
+        }
+        
+        if (node->right) {
+            [tmpStack addObject:node->right];
+        }
+    }
+    
+    BOOL isStop = NO;
+    
+    for (NSUInteger i = ansStack.count - 1; i >= 0; i--) {
+        BSTNode *node = ansStack[i];
+        block(node->value, &isStop);
+        if (isStop) {
+            break;
+        }
+    }
+    
+}
 
 
 - (void)levelOrderEnumerate:(BSTEnumeratorBlock)block

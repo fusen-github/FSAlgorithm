@@ -29,11 +29,18 @@ typedef void(^BSTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
 /**
  前序遍历：就是把根结点放在前面先遍历
  先访问根结点、再访问左子树、最后访问右子树
+ 递归
  */
 - (void)preorderEnumerate:(BSTEnumeratorBlock)block;
 
 /** 前序迭代*/
 - (void)preorderIterate:(BSTIterator *)iterator;
+
+/**
+ 前序遍历—>循环
+ 根左右
+ */
+- (void)preorderLoopEnumerate:(BSTEnumeratorBlock)block;
 
 /**
  中序遍历：把根结点放在中间遍历
@@ -42,10 +49,28 @@ typedef void(^BSTEnumeratorBlock)(id<FSComparable> item, BOOL *stop);
 - (void)inorderEnumerate:(BSTEnumeratorBlock)block;
 
 /**
+ 中序遍历—>循环
+ 左根右
+ */
+- (void)inorderLoopEnumerate:(BSTEnumeratorBlock)block;
+
+/**
  后序变历：把根结点放在最后
  先访问左子树、再访问右子树、最后访问根结点
  */
 - (void)postorderEnumerate:(BSTEnumeratorBlock)block;
+
+/**
+ 后序遍历—>循环
+ 左右根
+ */
+- (void)postorderLoopEnumerate_01:(BSTEnumeratorBlock)block;
+
+/**
+ 后序遍历—>循环
+ 左右根
+ */
+- (void)postorderLoopEnumerate_02:(BSTEnumeratorBlock)block;
 
 /**
  层序遍历：按照二叉树的层级顺序，从上向下、从左向右依次遍历

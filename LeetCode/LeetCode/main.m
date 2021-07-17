@@ -17,6 +17,10 @@ static void test06()
     NSLog(@"%@", ans);
 }
 
+static void test07() {
+    
+}
+
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
